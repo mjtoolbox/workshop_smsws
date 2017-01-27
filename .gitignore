@@ -8,3 +8,4 @@ non-dist
 .classpath
 *.log.*
 *.log
+.gitignore
