@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+
+    <link href="resources/bootstrap/css/bootstrap.css" rel="stylesheet"/>
+    <link href="resources/styles/main.css" rel="stylesheet">
+    <link href="resources/styles/mystyles.css" rel="stylesheet">
+</head>
+
+<body ng-app="myApp">
+<header class="jumbotron">
+    <div class="container">
+        <div class="row row-header">
+            <div class="col-xs-12 col-sm-8">
+                <h1>Student Management System</h1>
+                <p style="padding:5px;"></p>
+                <p>Azure Hands-on Workshop: Simple CRUD application using Angular 1.x, MongoDB, Spring REST</p>
+            </div>
+            <div class="col-xs-12 col-sm-2">
+                <p style="padding:5px;"></p>
+                <img src="resources/images/sms.png" class="img-responsive">
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="main" ng-controller="StudentController">
+    <div class="container">
+
+        <h1>Students</h1>
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <td>ID</td>
+                <td>Name</td>
+                <td>Age</td>
+                <td style="width:20px"></td>
+                <td style="width:20px"></td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="student in students">
+                <td>{{ student.id }}</td>
+                <td>{{ student.name }}</td>
+                <td>{{ student.age}}</td>
+                <td><a ng-click="editUser(student.id)" class="btn btn-small btn-primary">edit</a></td>
+                <td><a ng-click="deleteUser(student.id)" class="btn btn-small btn-danger">delete</a></td>
+            </tr>
+            </tbody>
+        </table>
+        <!--<a href="newStudent" class="btn btn-small">create new student</a>-->
+        <a ui-sref="edit" class="btn btn-small btn-primary">create new student</a>
+
+        <p style="padding:10px;"></p>
+    </div>
+</div>
+
+<footer class="row-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <p style="padding:10px;"></p>
+                <p align=center>© Copyright 2017 MJToolbox</p>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="resources/js/lib/jquery/jquery-2.1.4.min.js"></script>
+<script src="resources/bootstrap/js/bootstrap.js"></script>
+<script src="resources/js/lib/angular/angular.js"></script>
+<script src="resources/js/lib/angular/angular-resource.js"></script>
+<script src="resources/js/app.js"></script>
+<script src="resources/js/controllers/StudentController.js"></script>
+</body>
+</html>

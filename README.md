@@ -1,0 +1,1 @@
+Azure workshop sample application
