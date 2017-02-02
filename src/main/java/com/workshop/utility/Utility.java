@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
 /**
  * Created by mijo on 2016-05-19.
  */
@@ -31,4 +34,31 @@ public class Utility {
         }
         return properties;
     }
+    
+     public static JsonObject convertFileToJSON(String fileName) {
+
+        JsonObject jsonObject = null;
+        try {
+            ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+            File file = new File(classLoader.getResource(fileName).getFile());
+
+            InputStream is = new FileInputStream(file);
+            StringBuilder sb = new StringBuilder();
+            Scanner scanner = new Scanner(is);
+            while (scanner.hasNext()) {
+                sb.append(scanner.next());
+            }
+            scanner.close();
+
+            jsonObject = new JsonParser().parse(sb.toString()).getAsJsonObject();
+            System.out.println(jsonObject);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (Exception ioe) {
+            ioe.printStackTrace();
+        }
+
+        return jsonObject;
+    }
+    
 }
